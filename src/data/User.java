@@ -3,8 +3,10 @@ package data;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.io.Serializable;
+
 @JsonAutoDetect
-public class User {
+public class User implements Serializable {
     private String name;
     private String department;
     private String phone;
@@ -31,5 +33,29 @@ public class User {
 
     public int getSalary() {
         return salary;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "ФИО: " + name +
+                " отдел: " + department +
+                " тел.: " + phone +
+                " оклад: " + salary;
     }
 }

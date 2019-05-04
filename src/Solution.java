@@ -14,9 +14,10 @@ public class Solution {
                 CommandExecutor.execute(operation);
             } catch (WrongActionException e) {
                 ConsoleHelper.writeMessage("Что-то пошло не так.");
-            }
-        catch (Exception e) {
+            } catch (Exception e) {
                 ConsoleHelper.writeMessage("Произошла ошибка. Проверьте введенные данные.");
+                e.printStackTrace();
+
             }
 
         } while (operation != Operation.EXIT);
