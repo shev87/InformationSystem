@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.io.Serializable;
 
 @JsonAutoDetect
-public class User implements Serializable {
+public class User implements Serializable, Comparable<User> {
+    private static final long serialVersionUID = 6405239208607886158L;
+
     private String name;
     private String department;
     private String phone;
@@ -35,27 +37,16 @@ public class User implements Serializable {
         return salary;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
     @Override
     public String toString() {
         return "ФИО: " + name +
-                " отдел: " + department +
-                " тел.: " + phone +
-                " оклад: " + salary;
+                "\t отдел: " + department +
+                "\t тел.: " + phone +
+                "\t оклад: " + salary;
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.name.compareToIgnoreCase(o.name);
     }
 }

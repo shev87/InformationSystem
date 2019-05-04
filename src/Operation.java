@@ -3,5 +3,7 @@ public enum Operation {
     ADD,
     CHANGE,
     DELETE,
-    EXIT
+    EXIT,
+    PEOPLE,
+    BOSSES
 }
