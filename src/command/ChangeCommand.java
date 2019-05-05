@@ -33,6 +33,7 @@ public class ChangeCommand implements Command{
         String name = ConsoleHelper.readString();
 
         list = DataSource.readListUsersFromFile();
+        //ищем нужного сотрудника...
         User changeUser = null;
         for (User u : list){
             if (u.getName().equalsIgnoreCase(name)) {
@@ -40,6 +41,7 @@ public class ChangeCommand implements Command{
                 break;
             }
         }
+        //.... и удаляем его и списка чтобы добавить его же с обновлённой инфо
         if (changeUser == null) throw new WrongActionException();
         else {
             list.remove(changeUser);
@@ -52,7 +54,9 @@ public class ChangeCommand implements Command{
             User user = new User(name, department, phone, salary);
             list.add(user);
             DataSource.writeListUsersToFile(list);
-            //изменённый сотрудник мб начальником
+            //изменённый сотрудник мб начальником, поэтому если так,
+            // то тоже измяняем инфу в листе отделов (в моём случае может измениться телефон,
+            // который я вывожу в консоль)
             listDepartment = DataSource.readListDepartmentsFromFile();
             Department changeDepart = null;
             for (Department d : listDepartment){
@@ -76,6 +80,7 @@ public class ChangeCommand implements Command{
         ConsoleHelper.writeMessage("***ИЗМЕНЕНИЕ начальника отдела***");
         ConsoleHelper.writeMessage("Введите ФИО нового начальника:");
         String name = ConsoleHelper.readString();
+        // ищем, есть ли этот чувак вообще в листе сотрудников
         User newBoss = null;
         list = DataSource.readListUsersFromFile();
         for (User u : list){
@@ -85,6 +90,7 @@ public class ChangeCommand implements Command{
             }
         }
         if (newBoss == null) throw new WrongActionException();
+        // ищем есть ли вообще такой отдел в списке отделов
         listDepartment = DataSource.readListDepartmentsFromFile();
         Department changeDepart = null;
         for (Department d : listDepartment){

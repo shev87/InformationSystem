@@ -45,6 +45,7 @@ public class DeleteCommand implements Command{
         else {
             list.remove(deleteUser);
             DataSource.writeListUsersToFile(list);
+            // если удалили начальника, то удаляем и его отдел из списка отделов
             Department deleteD = null;
             for (Department d : listDepartments){
                 if (d.getUser().getName().equalsIgnoreCase(deleteUser.getName())) {

@@ -12,8 +12,8 @@ public class Solution {
         Operation operation = null;
         do {
             try {
-                //operation = askOperation();
                 int mode = askMainOperation();
+                //mode - режим работы базы: 1 - с сотрудниками, 2 - с отделами
                 switch (mode){
                     case 1:
                         DataSource.setMode(1);
@@ -27,7 +27,7 @@ public class Solution {
                         break;
                     case 3:
                         operation = Operation.EXIT;
-                        new ExitCommand().execute();
+                        CommandExecutor.execute(operation);
                         break;
                     default: throw new WrongActionException();
                 }

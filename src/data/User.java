@@ -39,10 +39,11 @@ public class User implements Serializable, Comparable<User> {
 
     @Override
     public String toString() {
-        return "ФИО: " + name +
+        /*return "ФИО: " + name +
                 "\t отдел: " + department +
                 "\t тел.: " + phone +
-                "\t оклад: " + salary;
+                "\t оклад: " + salary;*/
+        return String.format("ФИО: %-30s отдел: %-15s тел.: %-16s оклад: %5d", name, department, phone, salary);
     }
 
     @Override

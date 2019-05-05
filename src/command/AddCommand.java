@@ -41,6 +41,7 @@ public class AddCommand implements Command{
         User user = new User(name, department, phone, salary);
 
         list = DataSource.readListUsersFromFile();
+        //проверка на наличие в базе такого же сотрудника
         User doubleUser = null;
         for (User u : list){
             if (u.getName().equalsIgnoreCase(user.getName())) {
@@ -49,6 +50,7 @@ public class AddCommand implements Command{
                 break;
             }
         }
+        //добавление сотрудника в список
         if (doubleUser == null) {
             list.add(user);
             DataSource.writeListUsersToFile(list);

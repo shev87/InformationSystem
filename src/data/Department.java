@@ -18,9 +18,10 @@ public class Department implements Serializable, Comparable<Department> {
 
     @Override
     public String toString() {
-        return "отдел: " + user.getDepartment() +
+        /*return "отдел: " + user.getDepartment() +
                 "\t начальник: " + user.getName() +
-                "\t телефон: " + user.getPhone();
+                "\t телефон: " + user.getPhone();*/
+        return String.format("отдел: %-15s начальник: %-30s телефон: %-15s", user.getDepartment(), user.getName(), user.getPhone());
     }
 
     @Override
