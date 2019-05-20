@@ -1,4 +1,4 @@
-package helper;
+package netcracker.helper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

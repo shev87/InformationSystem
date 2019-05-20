@@ -1,4 +1,4 @@
-package data;
+package netcracker.data;
 
 import java.io.*;
 import java.util.ArrayList;

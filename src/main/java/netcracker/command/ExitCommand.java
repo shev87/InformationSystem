@@ -1,6 +1,6 @@
-package command;
+package netcracker.command;
 
-import helper.ConsoleHelper;
+import netcracker.helper.ConsoleHelper;
 
 public class ExitCommand implements Command{
     @Override

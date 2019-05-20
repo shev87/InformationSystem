@@ -1,3 +1,5 @@
+package netcracker;
+
 public enum Operation {
     WATCH,
     ADD,
