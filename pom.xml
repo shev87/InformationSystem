@@ -7,6 +7,13 @@
     <groupId>groupId</groupId>
     <artifactId>InformationSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version> <!-- ex: 1.2.140 -->
+        </dependency>
+    </dependencies>
 
 
 </project>
