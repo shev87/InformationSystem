@@ -1,6 +1,7 @@
 package netcracker;
 
 import netcracker.data.DataSource;
+import netcracker.exception.InterruptOperationException;
 import netcracker.exception.WrongActionException;
 import netcracker.exception.WrongIDException;
 import netcracker.helper.ConsoleHelper;
@@ -14,21 +15,12 @@ import java.sql.SQLException;
 
 
 public class Solution {
-// Блок объявления констант
-    /**
-     * DB_URL: Адрес нашей базы данных. Состоит из данных, разделённых двоеточием:
-     * - Протокол=jdbc
-     * - Вендор (производитель/наименование) СУБД=h2
-     * - Расположение СУБД, в нашем случае путь до файла (c:/JavaPrj/SQLDemo/test.db/stockExchange).
-     *   Для сетевых СУБД тут дополнительно указываются имена или IP адреса удалённых серверов,
-     *   TCP/UDP номера портов и так далее.
-     */
     public static final String DB_URL = "jdbc:h2:~/base";
-    /**
-     * DB_Driver: Здесь мы определили имя драйвера, которое можно узнать, например, кликнув
-     * мышкой на подключенную библиотеку и развернув её структуру в директории test.lib текущего проекта.
-     */
+//    public static final String DB_URL = "jdbc:mysql://localhost:3306/world";
+    public static String name = "Vladimir";
+    public static String pass = "7896";
     public static final String DB_Driver = "org.h2.Driver";
+//    public static final String DB_Driver = "com.mysql.cj.jdbc.Driver";
 
     private static Solution solution;
     // Таблицы СУБД
@@ -37,6 +29,7 @@ public class Solution {
 
     // Получить новое соединение с БД
     public static Connection getConnection() throws SQLException {
+//        return DriverManager.getConnection(DB_URL, name, pass);
         return DriverManager.getConnection(DB_URL);
     }
 
@@ -92,6 +85,8 @@ public class Solution {
                 ConsoleHelper.writeMessage("Что-то пошло не так. Проверьте введённые данные");
             } catch (WrongIDException e){
                 ConsoleHelper.writeMessage("Вы неправильно ввели id");
+            }catch (InterruptOperationException e){
+                ConsoleHelper.writeMessage("Вы вышли из текущего режима работы программы!");
             }
             catch (Exception e) {
                 ConsoleHelper.writeMessage("Произошла ошибка. Попробуйте снова.");
@@ -103,7 +98,7 @@ public class Solution {
     }
 
 
-    public static int askMainOperation() throws IOException {
+    public static int askMainOperation() throws IOException, InterruptOperationException {
         System.out.println("");
         ConsoleHelper.writeMessage("Выберите раздел:");
         ConsoleHelper.writeMessage("\t 1 - сотрудники");
@@ -113,7 +108,7 @@ public class Solution {
         return ConsoleHelper.readInt();
     }
 
-    public static Operation askOperation() throws IOException {
+    public static Operation askOperation() throws IOException, InterruptOperationException {
         System.out.println("");
         ConsoleHelper.writeMessage("Выберите операцию:");
         ConsoleHelper.writeMessage(String.format("\t %d - просмотр данных", Operation.WATCH.ordinal()));

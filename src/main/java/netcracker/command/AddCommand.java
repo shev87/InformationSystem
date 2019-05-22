@@ -4,6 +4,7 @@ import netcracker.Solution;
 import netcracker.data.DataSource;
 import netcracker.data.Department;
 import netcracker.data.User;
+import netcracker.exception.InterruptOperationException;
 import netcracker.exception.WrongActionException;
 import netcracker.helper.ConsoleHelper;
 
@@ -29,7 +30,7 @@ public class AddCommand implements Command{
         }
     }
 
-    private void addUser() throws IOException{
+    private void addUser() throws IOException, InterruptOperationException {
         ConsoleHelper.writeMessage("");
         ConsoleHelper.writeMessage("***Добавление сотрудника***");
         ConsoleHelper.writeMessage("Введите ФИО:");
