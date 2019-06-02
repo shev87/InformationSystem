@@ -17,10 +17,16 @@ import java.sql.SQLException;
 public class Solution {
     public static final String DB_URL = "jdbc:h2:~/base";
 //    public static final String DB_URL = "jdbc:mysql://localhost:3306/world";
-    public static String name = "Vladimir";
-    public static String pass = "7896";
-    public static final String DB_Driver = "org.h2.Driver";
-//    public static final String DB_Driver = "com.mysql.cj.jdbc.Driver";
+    public static String name = "root";
+    public static String pass = "1234";
+
+    private static String user = "shev87";
+    private static String password = "12345678";
+    private static String urlOnline = "jdbc:mysql://db4free.net:3306/netcracker?useSSL=false";
+
+//  public static final String DB_Driver = "org.h2.Driver";
+//  public static final String DB_Driver = "com.mysql.cj.jdbc.Driver";
+    public static final String DB_Driver = "com.mysql.jdbc.Driver";
 
     private static Solution solution;
     // Таблицы СУБД
@@ -30,7 +36,8 @@ public class Solution {
     // Получить новое соединение с БД
     public static Connection getConnection() throws SQLException {
 //        return DriverManager.getConnection(DB_URL, name, pass);
-        return DriverManager.getConnection(DB_URL);
+        return DriverManager.getConnection(urlOnline, user, password);
+ //       return DriverManager.getConnection(DB_URL);
     }
 
     // Инициализация
